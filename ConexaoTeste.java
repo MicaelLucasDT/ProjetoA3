@@ -10,7 +10,7 @@ public class ConexaoTeste {
 
 	private static final String url = "jdbc:mysql://localhost:3306/projetoa3";
 	private static final String user = "root";
-	private static final String password = "Pin91166415";
+	private static final String password = "";
 
 	//conecxão com o banco
 	
