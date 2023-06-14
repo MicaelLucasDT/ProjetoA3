@@ -3,7 +3,7 @@ package Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConexaoTeste {
+public class ConexaoBD {
 
 	private static final String url = "jdbc:mysql://localhost:3306/registrojogos";
 	private static final String user = "root";
