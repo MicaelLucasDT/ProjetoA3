@@ -178,4 +178,4 @@ public class Principal {
 
 
 
-//Pegar as informações da classe "plataforma" , jogá-las em "plataformajogo" e realizar uma ligação.
+//Apagar as tabelas plataformas e substituir por categoria.
