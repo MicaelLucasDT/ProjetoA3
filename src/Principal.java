@@ -178,4 +178,4 @@ public class Principal {
 
 
 
-//Listar as 3 plataformas tendo os "ID's" dos jogos vinculados a elas.
+//Pegar as informações da classe "plataforma" , jogá-las em "plataformajogo" e realizar uma ligação.
