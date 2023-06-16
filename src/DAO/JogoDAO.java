@@ -14,7 +14,7 @@ public class JogoDAO {
 	
 	public void salvar (Jogo jogo) {
 		
-		String sql = "INSERT INTO jogo_digital (nome_jogo, ano_lancamento, id_empresa, id_plataforma) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO jogo_digital (nome, ano_lancamento, id_empresa, id_plataforma) VALUES (?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -27,10 +27,10 @@ public class JogoDAO {
 			//Cria uma PreparedStatement para executar uma query. 
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores esperados pela query.
-			pstm.setString(1, jogo.getNome_jogo());
-			pstm.setString(2, jogo.getAno_lancamento());
-			pstm.setLong(3, jogo.getId_empresa());
-			pstm.setLong(4, jogo.getId_plataforma());
+			pstm.setString(1, jogo.getNome());
+			pstm.setInt(2, jogo.getAnoLancamento());
+			pstm.setLong(3, jogo.getIdEmpresa());
+			pstm.setLong(4, jogo.getIdPlataforma());
 
 			//Executar a query
 			pstm.execute();
@@ -54,8 +54,7 @@ public class JogoDAO {
 	
 	public void atualizar(Jogo jogo) {
 		
-		String sql = "UPDATE jogo_digital SET nome_jogo = ?, ano_lancamento = ?, id_empresa = ?, id_plataforma = ?" + 
-				"WHERE id_jogo = ?";
+		String sql = "UPDATE jogo_digital SET nome = ?, ano_lancamento = ?, id_empresa = ?, id_plataforma = ? WHERE id_jogo = ?";
 	
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -66,13 +65,13 @@ public class JogoDAO {
 			//Criar a classe para executar a query
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores para atualizar.
-			pstm.setString(1, jogo.getNome_jogo());
-			pstm.setString(2, jogo.getAno_lancamento());
-			pstm.setLong(3, jogo.getId_empresa());
-			pstm.setLong(3, jogo.getId_plataforma());
+			pstm.setString(1, jogo.getNome());
+			pstm.setInt(2, jogo.getAnoLancamento());
+			pstm.setLong(3, jogo.getIdEmpresa());
+			pstm.setLong(4, jogo.getIdPlataforma());
 			
 			//Qual o ID do registo que deseja atualizar.
-			pstm.setLong(4, jogo.getId_jogo());
+			pstm.setLong(5, jogo.getIdJogo());
 			
 			//Executar a query
 			pstm.execute();
@@ -145,11 +144,11 @@ public class JogoDAO {
 				
 				
 				
-				jogo.setId_jogo(rst.getLong("id_jogo"));
-				jogo.setNome_jogo(rst.getString("nome_jogo"));
-				jogo.setAno_lancamento(rst.getString("ano_lancamento"));
-				jogo.setId_empresa(rst.getLong("id_empresa"));
-				jogo.setId_plataforma(rst.getLong("id_plataforma"));
+				jogo.setIdJogo(rst.getLong("id_jogo"));
+				jogo.setNome(rst.getString("nome"));
+				jogo.setAnoLancamento(rst.getInt("ano_lancamento"));
+				jogo.setIdEmpresa(rst.getLong("id_empresa"));
+				jogo.setIdPlataforma(rst.getLong("id_plataforma"));
 				
 				jogos.add(jogo);
 			

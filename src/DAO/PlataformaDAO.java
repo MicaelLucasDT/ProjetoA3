@@ -33,8 +33,8 @@ public class PlataformaDAO {
 
 				Plataforma plataforma = new Plataforma();
 		
-				plataforma.setId_plataforma(rst.getLong("id_plataforma"));
-				plataforma.setNome_plataforma(rst.getString("nome_plataforma"));
+				plataforma.setIdPlataforma(rst.getLong("id_plataforma"));
+				plataforma.setNome(rst.getString("nome"));
 				
 				
 				plataformas.add(plataforma);
