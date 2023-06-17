@@ -139,16 +139,6 @@ public class Principal {
 				Scanner sc11 = new Scanner(System.in);
 				System.out.print("Para qual nome deseja mudar? ");
 				j.setNomejogo(sc11.nextLine());
-
-				Scanner sc1113 = new Scanner(System.in);
-				System.out.print("Qual a empresa? ");
-				j.setNomejogo(sc1113.nextLine());
-				
-				Scanner sc1111 = new Scanner(System.in);
-				System.out.print("Qual a plataforma? ");
-				j.setNomejogo(sc1111.nextLine());
-				
-				
 				
 				empresaDAO.atualizar(ep2);
 

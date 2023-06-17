@@ -117,7 +117,7 @@ public class EmpresaDAO {
 		//	pstm.setString(2, empresa.getCnpj());
 			
 			//Qual o ID do registo que deseja atualizar.
-			pstm.setLong(3, empresa.getIdempresa());
+			pstm.setLong(2, empresa.getIdempresa());
 			
 			//Executar a query
 			pstm.execute();
