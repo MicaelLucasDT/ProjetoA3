@@ -2,22 +2,25 @@ package Entity;
 
 public class Plataforma {
 
-	private long idPlataforma;
-	private String nome;
 	
-	public long getIdPlataforma() {
-		return idPlataforma;
+	private long idplataforma;
+	private String nomeplataforma;
+	
+	public long getIdplataforma() {
+		return idplataforma;
 	}
-	public void setIdPlataforma(long idPlataforma) {
-		this.idPlataforma = idPlataforma;
+	public void setIdplataforma(long idplataforma) {
+		this.idplataforma = idplataforma;
 	}
-	public String getNome() {
-		return nome;
+	public String getNomeplataforma() {
+		return nomeplataforma;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeplataforma(String nomeplataforma) {
+		this.nomeplataforma = nomeplataforma;
 	}
+	
+	
+	
+	
 
-	
-	
 }

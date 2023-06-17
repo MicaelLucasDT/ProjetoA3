@@ -14,7 +14,7 @@ public class JogoDAO {
 	
 	public void salvar (Jogo jogo) {
 		
-		String sql = "INSERT INTO jogo_digital (nome, ano_lancamento, id_empresa, id_plataforma) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO jogo_digital (nome, anolancamento, idempresa, idplataforma) VALUES (?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -27,10 +27,10 @@ public class JogoDAO {
 			//Cria uma PreparedStatement para executar uma query. 
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores esperados pela query.
-			pstm.setString(1, jogo.getNome());
-			pstm.setInt(2, jogo.getAnoLancamento());
-			pstm.setLong(3, jogo.getIdEmpresa());
-			pstm.setLong(4, jogo.getIdPlataforma());
+			pstm.setString(1, jogo.getNomejogo());
+			pstm.setString(2, jogo.getAnolancamento());
+			pstm.setLong(3, jogo.getIdempresa());
+			pstm.setLong(4, jogo.getIdlataforma());
 
 			//Executar a query
 			pstm.execute();
@@ -54,7 +54,8 @@ public class JogoDAO {
 	
 	public void atualizar(Jogo jogo) {
 		
-		String sql = "UPDATE jogo_digital SET nome = ?, ano_lancamento = ?, id_empresa = ?, id_plataforma = ? WHERE id_jogo = ?";
+		String sql = "UPDATE jogo_digital SET nome = ?, anolancamento = ?, idempresa = ?, idplataforma = ? " + 
+				"WHERE id = ?";
 	
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -65,13 +66,13 @@ public class JogoDAO {
 			//Criar a classe para executar a query
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores para atualizar.
-			pstm.setString(1, jogo.getNome());
-			pstm.setInt(2, jogo.getAnoLancamento());
-			pstm.setLong(3, jogo.getIdEmpresa());
-			pstm.setLong(4, jogo.getIdPlataforma());
+			pstm.setString(1, jogo.getNomejogo());
+			pstm.setString(2, jogo.getAnolancamento());
+			pstm.setLong(3, jogo.getIdempresa());
+			pstm.setLong(4, jogo.getIdlataforma());
 			
 			//Qual o ID do registo que deseja atualizar.
-			pstm.setLong(5, jogo.getIdJogo());
+			pstm.setLong(5, jogo.getIdjogo());
 			
 			//Executar a query
 			pstm.execute();
@@ -92,9 +93,9 @@ public class JogoDAO {
 	}
 	
 	
-	public void apagarByID (int cod_cliente) {
+	public void apagarByID (int idjogo) {
 		
-		String sql = "DELETE FROM jogo_digital WHERE id_jogo = ?";
+		String sql = "DELETE FROM jogo_digital WHERE id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -102,7 +103,7 @@ public class JogoDAO {
 		try {
 			conn = ConexaoBD.createConnectionToMySQL();
 			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, cod_cliente);
+			pstm.setInt(1, idjogo);
 			pstm.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,11 +145,15 @@ public class JogoDAO {
 				
 				
 				
-				jogo.setIdJogo(rst.getLong("id_jogo"));
-				jogo.setNome(rst.getString("nome"));
-				jogo.setAnoLancamento(rst.getInt("ano_lancamento"));
-				jogo.setIdEmpresa(rst.getLong("id_empresa"));
-				jogo.setIdPlataforma(rst.getLong("id_plataforma"));
+				jogo.setIdjogo(rst.getLong("id"));
+				
+				jogo.setNomejogo(rst.getString("nome"));
+				
+				jogo.setAnolancamento(rst.getString("anolancamento"));
+				
+				jogo.setIdempresa(rst.getLong("idempresa"));
+				
+				jogo.setIdlataforma(rst.getLong("idplataforma"));
 				
 				jogos.add(jogo);
 			

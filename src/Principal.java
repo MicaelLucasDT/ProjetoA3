@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 import DAO.JogoDAO;
 import Entity.Jogo;
+import DAO.PlataformaDAO;
 import Entity.Empresa;
 import DAO.EmpresaDAO;
-import DAO.PlataformaDAO;
 import Entity.Plataforma;
 
 public class Principal {
@@ -16,7 +16,7 @@ public class Principal {
 		Empresa ep = new Empresa();
 		JogoDAO jogoDao = new JogoDAO();
 		EmpresaDAO empresaDAO = new EmpresaDAO();
-		// Plataforma pl = new Plataforma();
+	//	Plataforma plataforma = new Plataforma();
 		PlataformaDAO plataformaDAO = new PlataformaDAO();
 
 		int n;
@@ -29,65 +29,67 @@ public class Principal {
 			System.out.println("Digite 2 para cadastrar um novo jogo: ");
 			System.out.println("Digite 3 para listar os jogos: ");
 			System.out.println("Digite 4 para listar as empresas cadastradas: ");
-			System.out.println("Digite 5 para listar as plataformas disponíveis: ");
-			System.out.println("Digite 6 para atualizar informações de algum jogo: ");
-			System.out.println("Digite 7 para atualizar informações de alguma empresa: ");
-			System.out.println("Digite 8 para deletar o registro de algum jogo: ");
-			System.out.println("Digite 9 para deletar o registro de alguma empresa: ");
+			System.out.println("Digite 5 para atualizar informações de algum jogo: ");
+			System.out.println("Digite 6 para atualizar informações de alguma empresa: ");
+			System.out.println("Digite 7 para deletar o registro de algum jogo: ");
+			System.out.println("Digite 8 para listar as plataformas cadastradas: ");
 			System.out.println("Digite 0 para finalizar o programa: ");
 			System.out.println("===========================================================");
 			n = sc.nextInt();
 
 			switch (n) {
-			case 1: 
-				// Cadastrar uma nova empresa
-				System.out.print("Cadastro de empresa: ");
-				
-				Scanner sc0002 = new Scanner(System.in);
-				System.out.print("Insira o nome da empresa: ");
-				ep.setNome(sc0002.nextLine());
-				
-				Scanner sc0003 = new Scanner(System.in);
-				System.out.print("Insira o CNPJ da empresa: ");
-				ep.setCnpj(sc0003.nextLine());
+			case 1:
 
+				// Cadastrar uma nova empresa
+				System.out.println("===========================================================");
+				System.out.println("Cadastro de empresa: ");
+				System.out.println("===========================================================");
+				Scanner sc0001 = new Scanner(System.in);
+				System.out.print("Insira o nome da empresa: ");
+				ep.setNomeempresa(sc0001.nextLine());
+
+			//	Scanner sc000 = new Scanner(System.in);
+			//	System.out.println("Insira o CNPJ da empresa: ");
+			//	ep.setNomeempresa(sc000.nextLine());
+				
+				
 				empresaDAO.salvar(ep);
 
 				break;
-			
-			case 2: 
+
+			case 2:
+
 				// Cadastrar jogo
-				System.out.print("===========================================================");
-				System.out.print("Cadastro de um novo jogo: ");
-				System.out.print("===========================================================");
-				
-				Scanner nome = new Scanner(System.in);
+				System.out.println("===========================================================");
+				System.out.println("Cadastro de um novo jogo: ");
+				System.out.println("===========================================================");
+				Scanner sc001 = new Scanner(System.in);
 				System.out.print("Insira o nome do jogo: ");
-				j.setNome(nome.nextLine());
-				
-				Scanner ano = new Scanner(System.in);
+				j.setNomejogo(sc001.nextLine());
+
+				Scanner sc02 = new Scanner(System.in);
 				System.out.print("Insira o ano de lançamento: ");
-				j.setAnoLancamento(ano.nextInt());
+				j.setAnolancamento(sc02.nextLine());
 
-				Scanner presa = new Scanner(System.in);
-				System.out.print("Qual a empresa? ");
-				j.setIdEmpresa(presa.nextLong());
+				Scanner sc03 = new Scanner(System.in);
+				System.out.print("Qual o desenvolvedor? ");
+				j.setIdempresa(sc03.nextLong());
 
-				Scanner plat = new Scanner(System.in);
+				Scanner sc09 = new Scanner(System.in);
 				System.out.print("Qual a plataforma? ");
-				j.setIdPlataforma(plat.nextLong());
+				j.setIdlataforma(sc09.nextLong());
 
 				jogoDao.salvar(j);
 
 				break;
-			
+
 			case 3:
 
 				// visualização dos registros de jogos no banco de dados.
 				for (Jogo jogo : jogoDao.getJogos()) {
 
-					System.out.println("Nome: " + jogo.getNome() + "| Data de lançamento: " + jogo.getAnoLancamento()
-							+ "| Desenvolvedor: " + jogo.getIdEmpresa() + "| Plataforma: " + jogo.getIdPlataforma());
+					System.out.println(" - Id: " + jogo.getIdjogo() + " Nome: " + jogo.getNomejogo() + "| Data de lançamento: "
+							+ jogo.getAnolancamento() + "| Desenvolvedor: " + jogo.getIdempresa() + "| Plataforma: " + jogo.getIdlataforma());
 
 				}
 				break;
@@ -97,79 +99,84 @@ public class Principal {
 				// visualização dos registros de empresas no banco de dados.
 				for (Empresa empresa : empresaDAO.getEmpresas()) {
 
-					System.out.println(" - Id: " + empresa.getIdEmpresa() + "| Nome: " + empresa.getNome() + "| CNPJ: "
-							+ empresa.getCnpj());
-				
+					System.out.println(" - Id: " + empresa.getIdempresa() + "| Nome: " + empresa.getNomeempresa() );
+
 				}
+
 				break;
 
 			case 5:
 
-				// visualização dos registros de plataformas.
-				for (Plataforma plataforma : plataformaDAO.getPlataformas()) {
-
-					System.out.println("Nome: " + plataforma.getNome() + " - Id: " + plataforma.getIdPlataforma());
-				
-				}
-				break;
-			case 6:
-			
 				// Atualizar informações de jogo
 				Jogo j2 = new Jogo();
 
 				Scanner sc0 = new Scanner(System.in);
-				System.out.print("Qual o ID do resgistro que deseja alterar? ");
-				j2.setIdJogo(Long.parseLong(sc0.nextLine()));
+				System.out.print("Quual o ID do resgistro que deseja alterar? ");
+				j.setIdjogo(sc0.nextLong());
 
 				Scanner sc1 = new Scanner(System.in);
 				System.out.print("Para qual nome deseja mudar? ");
-				j2.setNome(sc1.nextLine());
-				
+				j.setNomejogo(sc1.nextLine());
+
 				Scanner sc3 = new Scanner(System.in);
 				System.out.print("Qual a nova data de lançamento? ");
-				j2.setAnoLancamento(Integer.parseInt(sc3.nextLine()));
+				j.setAnolancamento(sc3.nextLine());
 
 				jogoDao.atualizar(j2);
 
 				break;
-			
-			case 7:
-			
+
+			case 6:
+
 				// Atualizar informações das empresas
 
 				Empresa ep2 = new Empresa();
 
 				Scanner sc00 = new Scanner(System.in);
-				System.out.print("Quual o ID do resgistro que deseja alterar? ");
-				j.setIdJogo(sc00.nextLong());
+				System.out.print("Qual o ID do resgistro que deseja alterar? ");
+				j.setIdjogo(sc00.nextLong());
 
 				Scanner sc11 = new Scanner(System.in);
 				System.out.print("Para qual nome deseja mudar? ");
-				j.setNome(sc11.nextLine());
-				
-				Scanner sc33 = new Scanner(System.in);
-				System.out.print("Qual a nova data de lançamento? ");
-				j.setAnoLancamento(sc33.nextInt());
+				j.setNomejogo(sc11.nextLine());
 
+				Scanner sc1113 = new Scanner(System.in);
+				System.out.print("Qual a empresa? ");
+				j.setNomejogo(sc1113.nextLine());
+				
+				Scanner sc1111 = new Scanner(System.in);
+				System.out.print("Qual a plataforma? ");
+				j.setNomejogo(sc1111.nextLine());
+				
+				
+				
 				empresaDAO.atualizar(ep2);
+
 				break;
-			
-			case 8:
+
+			case 7:
 
 				// Deletar o jogo pelo número de ID
-				System.out.print("Insira o ID do jogo que você deseja excluir: ");
+				System.out.println("Insira o ID do jogo que você deseja excluir: ");
 				jogoDao.apagarByID(sc.nextInt());
+				
+				break;
+			case 8: 
+				
+				// visualização dos registros de plataformas no banco de dados.
+				for (Plataforma pla : plataformaDAO.getPlataformas()) {
 
-			case 9:
-
-				// Deletar alguma empresa
-
-				System.out.print("Insira o ID da empresa que você deseja excluir: ");
-				empresaDAO.apagarByID(sc.nextInt());
-
-			default:
+					System.out.println(" - Id: " + pla.getIdplataforma() + " Nome: " + pla.getNomeplataforma() );
 
 				}
+
+				break;
+				
+				
+				
+			default:
+
+			}
 
 		} while (n != 0);
 
@@ -178,6 +185,5 @@ public class Principal {
 		sc.close();
 
 	}
-				
-			
+
 }

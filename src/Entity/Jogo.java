@@ -1,46 +1,47 @@
 package Entity;
 
-
 public class Jogo {
 
-	private long idJogo;
-	private String nome;
-	private int anoLancamento;
-	private long idEmpresa;
-	private long idPlataforma;
+	private long idjogo;
+	private String nomejogo;
+	private String anolancamento;
+	private long idempresa;
+	private long idlataforma;
 	
-	public long getIdJogo() {
-		return idJogo;
+	
+	public long getIdjogo() {
+		return idjogo;
 	}
-	public void setIdJogo(long idJogo) {
-		this.idJogo = idJogo;
+	public void setIdjogo(long idjogo) {
+		this.idjogo = idjogo;
 	}
-	public String getNome() {
-		return nome;
+	public String getNomejogo() {
+		return nomejogo;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomejogo(String nomejogo) {
+		this.nomejogo = nomejogo;
 	}
-	public int getAnoLancamento() {
-		return anoLancamento;
+	public String getAnolancamento() {
+		return anolancamento;
 	}
-	public void setAnoLancamento(int anoLancamento) {
-		this.anoLancamento = anoLancamento;
+	public void setAnolancamento(String anolancamento) {
+		this.anolancamento = anolancamento;
 	}
-	public long getIdEmpresa() {
-		return idEmpresa;
+	public long getIdempresa() {
+		return idempresa;
 	}
-	public void setIdEmpresa(long idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setIdempresa(long idempresa) {
+		this.idempresa = idempresa;
 	}
-	public long getIdPlataforma() {
-		return idPlataforma;
+	public long getIdlataforma() {
+		return idlataforma;
 	}
-	public void setIdPlataforma(long idPlataforma) {
-		this.idPlataforma = idPlataforma;
+	public void setIdlataforma(long idlataforma) {
+		this.idlataforma = idlataforma;
 	}
 	
 
+	
 	
 	
 	

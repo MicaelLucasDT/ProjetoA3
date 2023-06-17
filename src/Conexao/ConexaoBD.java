@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class ConexaoBD {
 
-	private static final String url = "jdbc:mysql://localhost:3306/registrojogos";
+	private static final String url = "jdbc:mysql://localhost:3306/projetoa3";
 	private static final String user = "root";
 	private static final String password = "1";
 

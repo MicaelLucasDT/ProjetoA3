@@ -2,21 +2,21 @@ package Entity;
 
 public class Empresa {
 
-	private long idEmpresa;
-	private String nome;
+	private long idempresa;
+	private String nomeempresa;
 	private String cnpj;
 	
-	public long getIdEmpresa() {
-		return idEmpresa;
+	public long getIdempresa() {
+		return idempresa;
 	}
-	public void setIdEmpresa(long idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setIdempresa(long idempresa) {
+		this.idempresa = idempresa;
 	}
-	public String getNome() {
-		return nome;
+	public String getNomeempresa() {
+		return nomeempresa;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeempresa(String nomeempresa) {
+		this.nomeempresa = nomeempresa;
 	}
 	public String getCnpj() {
 		return cnpj;
@@ -24,7 +24,5 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
-	
 	
 }

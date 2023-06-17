@@ -14,7 +14,7 @@ public class EmpresaDAO {
 	
 	public void salvar (Empresa empresa) {
 		
-		String sql = "INSERT INTO empresa (nome, cnpj) VALUES (?, ?)";
+		String sql = "INSERT INTO empresa (nomeempresa) VALUES (?)";
 		
 		Connection conn = null;
 		PreparedStatement pstm = null;
@@ -27,8 +27,8 @@ public class EmpresaDAO {
 			//Cria uma PreparedStatement para executar uma query. 
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores esperados pela query.
-			pstm.setString(1, empresa.getNome());
-			pstm.setString(2, empresa.getCnpj());
+			pstm.setString(1, empresa.getNomeempresa());
+		//	pstm.setString(2, empresa.getCnpj());
 			
 
 			//Executar a query
@@ -72,9 +72,9 @@ public class EmpresaDAO {
 
 				Empresa empresa = new Empresa();
 		
-				empresa.setIdEmpresa(rst.getLong("id_empresa"));
-				empresa.setNome(rst.getString("nome"));
-				empresa.setCnpj(rst.getString("cnpj"));
+				empresa.setIdempresa(rst.getLong("id_empresa"));
+				empresa.setNomeempresa(rst.getString("nomeempresa"));
+			//	empresa.setCnpj(rst.getString("cnpj"));
 				
 				empresas.add(empresa);
 			
@@ -101,7 +101,7 @@ public class EmpresaDAO {
 
 	public void atualizar(Empresa empresa) {
 		
-		String sql = "UPDATE empresa SET nome = ?, cnpj = ?" + 
+		String sql = "UPDATE empresa SET nomeempresa = ? " + 
 				"WHERE id_empresa = ?";
 	
 		Connection conn = null;
@@ -113,42 +113,15 @@ public class EmpresaDAO {
 			//Criar a classe para executar a query
 			pstm = conn.prepareStatement(sql);
 			//Adicionar os valores para atualizar.
-			pstm.setString(1, empresa.getNome());
-			pstm.setString(2, empresa.getCnpj());
-
+			pstm.setString(1, empresa.getNomeempresa());
+		//	pstm.setString(2, empresa.getCnpj());
+			
 			//Qual o ID do registo que deseja atualizar.
-			pstm.setLong(3, empresa.getIdEmpresa());
+			pstm.setLong(3, empresa.getIdempresa());
 			
 			//Executar a query
 			pstm.execute();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(pstm != null) {
-					pstm.close();
-				}if(conn != null) {
-					conn.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void apagarByID (int id_empresa) {
-		
-		String sql = "DELETE FROM empresa WHERE id_empresa = ?";
-		
-		Connection conn = null;
-		PreparedStatement pstm = null;
-		
-		try {
-			conn = ConexaoBD.createConnectionToMySQL();
-			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, id_empresa);
-			pstm.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
